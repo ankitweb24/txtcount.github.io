@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+            position: relative;
+            width: 100%;height: 100vh;
+            display: flex; justify-content: center;
+            align-items: center; flex-direction: column;
+        }
+        textarea{
+            position: absolute;
+            width: 60%;
+            height: 40%;
+            border: 3px solid #000;
+            background-color: rgb(0, 0, 0);
+            color: #ffffff;
+            top: 20%;
+            padding: 10px;
+            box-shadow: 0 0 40px rgb(0,0,0,.4);
+            font-size: 1.5rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        button{
+            position: relative;top: 18%;width: 30%;
+            padding: 10px;height: 60px;
+            text-transform: capitalize;
+            font-size: 1rem;
+            background-color: rgb(32, 124, 9);color: #fff;
+            border: none; outline: none;
+            box-shadow: 0 0 10px rgb(0,0,0,.4);
+            cursor: pointer;
+            letter-spacing: 3px;
+            transition-duration: 300ms;
+            border-radius: 50px;
+            margin: 0 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        button:active{
+            background-color:rgb(26, 93, 9);
+            box-shadow: none;
+        }
+        #res{
+            position: absolute;
+            top:100%;
+            font-size: 2rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color:rgb(0,0,0,.4);
+            text-transform: capitalize;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        h1{
+            position: absolute;
+            /* left: -10%; */
+            text-transform: uppercase;
+            /* transform: rotate(-90deg); */
+            font-size: 2rem;
+            color: #fff;
+            top: 5%;
+            text-shadow: 0 0 6px rgb(0,0,0,.3);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .btn_space{
+            top: 20%;
+            width: 100%;
+            height: 50px;
+            /* background-color: red; */
+            position: relative;
+            display: flex; justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+        }
+        @media(max-width: 768px){
+            h1{
+                font-size: 1.4rem;
+            }
+            textarea{
+                width: 80%;
+                margin: 0 10px;
+            }
+            button{
+                width: 40%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Text and Word Counter :)</h1>
+    <textarea name="" id="field" cols="30" rows="10"></textarea>
+    <br>
+    <div class="btn_space">
+        <button id="btn" style="padding: 10px;">click me</button>
+    <button  onclick="clearcode()">clear</button>
+    <p id="res"></p>
+    </div>
+    <script>
+        const btn = document.getElementById('btn');
+        const func = () =>{
+            var  field = document.getElementById('field').value.length;
+            var word = document.getElementById('field').value;
+
+            word = word.match( /\w+/g );
+            word = word.length;
+            
+
+            document.getElementById('res').innerHTML = "letters is : "+ field + "<br>" + 
+                "words is : " + word;
+        }
+
+        btn.addEventListener('click', func);
+
+        function clearcode() {
+            const p = document.getElementById('field').value = "";
+            document.getElementById('res').innerHTML = ""
+        }
+
+    </script>
+</body>
+</html>
